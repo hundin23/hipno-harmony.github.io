@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Гипнотерапия: главная страница</title>
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script>
+        jQuery(document).ready (function(){
+            jQuery("#sign").click (function(){
+              console.log('click func');
+                jQuery('#messageShow').hide ();
+                var name = jQuery("#name").val ();
+                var email = jQuery("#email").val ();
+                var message = jQuery("#message").val ();
+                var fail = "";
+                if (name.length <3) fail = "Имя не меньше 3 символов";
+                else if (email.split ('@').length-1 == 0 || email.split ('.').length-1 == 0 ) fail = "Ввели некорректный email";
+                else if (message.length <10)  fail = "Запрос должен быть больше 10 символов";
+                if (fail != "")
+                {
+                    jQuery('#messageShow').html (fail + "<div class='clear'><br></div>");
+                    jQuery('#messageShow').show ();
+                    return false;
+                }
+            });
+            jQuery("form").submit(function() {
+              console.log('submit');
+                jQuery.ajax({
+                   async: true, 
+                    type: "POST",
+                    url: "feedback.php",
+                    data: jQuery("form").serialize()
+                }).done(function(data) {
+                    console.log(data);
+                    alert("Спасибо за заявку!");
+                });
+                return false;
+            });
+        });
+    </script>
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul class="main-nav">
+                    <li class="first-child"><a href="index.php">Информация</a>
+                      <ul class="low-menu">
+                      <li><a href="#about">Обо мне</a>
+                      <li><a href="#problems">Проблемы с которыми работаю</a></li>
+                      <li><a href="#methodes">Методы работы</a></li>
+                        <li><a href="./index.html#sign">Записаться</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#about">Проекты</a>
+                      <ul class="low-menu">
+                      <li><a href="project.html"> Я и мое тело</a>
+                      <li><a href="./condition.html#condition-skype">Бесплатная проработка</a>
+                    </ul>
+                    </li>
+                    <li><a href="#">Отзывы</a>
+                    </li>
+                    <li><a href="index.html">Консультация</a>
+                        <ul class="low-menu">
+                      <li><a href="#costs">Стоимость работы</a></li>
+                      <li><a href="condition.html">Условия работы</a></li>
+                      <li><a href="./condition.html#condition-skype">Условия консультации по Skype.</a></li>
+
+                    </ul>
+                    </li>
+                    <li><a href="artickles.php">Статьи</a>
+                    </li>
+                    <li><a href="#contacts">Контакты</a>
+                    </li>
+                </ul>
+                <div class="logo">
+                    <a href="#"><img src="img/logo.png" width="130" height="70" alt="logo">
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <section class="main">
+          <div class="acquintance">
+            <h1 id="about">Обо мне</h1>
+          </div>
+          <div class="main-acquintance">
+             <div class="main-img">
+            <img src="img/portret.JPG" width="450" height="352" alt="portraite">
+          </div>
+            <div class="main-about">
+            <p><b>Я специалист по работе с психосоматическими проблемами.</b></p>
+
+<p>Я имею обширную практику в сфере работы с душевными травмами.
+Мои клиенты - это женщины и мужчины, всех возрастов: от подросткового до 50+.</p>
+
+            <p>Моя деятельности заключается в работе с различными негативными проявлениями Вашей психики: <b>фобиями, паническиеми атакaми, высыпаниями, а также любым другим психологическим дискомфортом: обидой, виной, одиночеством, стыдом, ревностью, злостью, иррациональной агрессией, потерей интереса к жизни, депрессией.</b></p>
+            <p>После избавления от этих негативных состояний жизнь Клиента наполняется полнотой и яркими красками.
+               Потому, что как правило, бонусом многие Клиенты получают высвобождение психической энергии, которая тратилась на эти негативные состояния и могут теперь с легкостью ее тратить по своему усмотрению.</p>
+            <p>Вы научитесь жить собственной жизнью, получать от нее больше счастья и радости, заводить новые знакомства, наслаждаться общением с другими, и собой.</p>
+            <p><b>Методы, которые я использую:</b> гипнотерапия и системные расстановки.</p>
+          </div>
+        </div>
+        <div class="mission">
+            <p><b>МОЯ МИССИЯ:</b> ПОМОГАТЬ ЛЮДЯМ ОБРЕТАТЬ УВЕРЕННОСТЬ, СВОБОДУ, НАПОЛНЕННОСТЬ И РАДОСТЬ ОТ СВОЕЙ ЖИЗНИ</p>
+        </div>
+        </section>
+
+      <section class="features-perfomance clearfix">
+        <div  class="features-main clearfix">
+          <h2>Преимущества гипнотерапии</h2>
+                </div>
+        <div class="features-block">
+        <div class="features-item clearfix">
+          <h3>Результативность</h3>
+          <p>Уже после первого сеанса положительный эффект</p>
+        </div>
+        <div class="features-item clearfix">
+            <h3>Скорость</h3>
+            <p>Избавление от проблемы за рекордное малое количество встреч от 1 до 5</p>
+        </div>
+        <div class="features-item clearfix">
+            <h3>Постоянность</h3>
+            <p>Достигнутые эффекты не исчезают за неделю или месяц, они долгосрочны </p>
+        </div>
+        </div>
+      </section>
+
+        <section class="features-problems clearfix">
+          <div class="features-main clearfix">
+            <h2 id="problems">С какими проблемами я работаю?</h2>
+          </div>
+          <div class="features-block">
+            <div class="features-item clearfix">
+              <h3>Страхи</h3>
+                <p>Страх знакомства и общения</p>
+                <p>Страх публичных выступлений</p>
+                <p>Страх общественного осуждения</p>
+                <p>Страх животных, собак, мышей и т. д.</p>
+                <p>Страх расставания с близким человеком</p>
+                <p>и т.д.</p>
+            </div>
+            <div class="features-item clearfix">
+              <h3>Проблемы в личных отношениях</h3>
+                <p>Обида на партнера</p>
+                <p>Вина перед парнером</p>
+                <p>Необоснованная ревность</p>
+                <p>Иррациоанальная агрессия к противоположному полу</p>
+                <p>Страх противоположного пола</p>
+                <p>и т.д.</p>
+              </div>
+            <div class="features-item clearfix">
+              <h3>Психосоматические расстройства</h3>
+                <p>Депрессии</p>
+                <p>Панические атаки</p>
+                <p>Бессоница</p>
+                <p>Хроническая усталость</p>
+                <p>Аллергия и высыпания</p>
+                <p>и т.д.</p>
+            </div>
+          </div>
+        </section>
+        <section class="features-methods clearfix">
+            <div class="features-main clearfix">
+              <h3 id="methodes">Методы работы</h3>
+            </div>
+            <div class="features-description">
+                <p> В индивидуальной работе я использую:</p>
+                <p class="method">Метод <b>регрессивной гипнотерапии</b>, который зарекомендовал себя, как один из самых эффективных на сегодняшний день.
+                  Он относится к методам <b>"быстрой помощи"</b>, при этом Вам не нужно тратить уйму своего времени на еженендельные приемы к психологу в течение годов.
+                  Он дает возможность справиться с проблемой за несколько сеансов, в среднем от 1 до 5.
+                  <p>Эффективность данного метода подтверждают, как мои работы, так и работы моих коллег.</p>
+                  <p>Метод, который я использую, это комбинация американской школы К. Бэньяна, так и базы "Харьковской школы гипнотерапии",которая усовершенствована и дополнен доктором медицинских наук, психиатром С.Г. Гринвальдом в сотрудничестве с ведущим гипнотерапевтом СНГ В.Макуловым.</p>
+                </p>
+                <p>Комплексная проработка и научный подход дают устойчивый результат. Позволяют найти и устранить причину возникновения проблемы.</p>
+                <p class="method"> В групповой работе, а также индивидуальной работе я использую метод <b>системных (семейных ) расстановок Б. Хеллингера</b>, который был усовершенствован одним из самых на сегодний день известных системных терапевтов - расстановщиков - Ириной Ищенко
+                </p>
+              <p>В своей работе я придерживаюсь системного подхода, конечным пунктом которого есть видимый результат. Кроме выше привиденных методов, со своими Клиентами я использую принципы лайф-коуча, гипнокоучинга,
+                , time - management, я провожу глубокую работу не только по редактированию тех установок, которые мешают Вам жить, но и также по быстрому внедрению и изменению нового образа жизни, с целью создания гармоничной и счастливой личности, которая ценит и умеет наслаждаться своей жизнью
+              </p>
+            </div>
+        </section>
+
+        <section class="cost clearfix">
+          <div class="features-main clearfix">
+            <h2 >Стоимость работы</h2>
+          </div>
+          <div class="features-cost clearfix">
+            <div id="costs" class="features-item-secondary clearfix">
+                <h3>Диагностика</h3>
+                <span>&ndash; №1 &ndash;</span>
+                <img src="img/item3.png" width="64" height="72" alt="item">
+                <p>
+
+Решение о возможности дальнейшей работы я принимаю после диагностики.
+В процессе диагностики уже можно положить начало для дальнейшей проработки проблемы. И получить ответы на вопросы.
+В случае моего отказа от дальнейшей работы, оплата за диагностику НЕ возвращается. Обычно рекомендую обратиться к другому специалисту </p>
+<span><b>Стоимость:</b></span>
+<p class="coast"><b>250 грн./ 600 руб.</b></p>
+            </div>
+            <div class="features-item-secondary clearfix">
+              <h3>Почасовая работа</h3>
+              <span>&ndash; №2 &ndash;</span>
+              <img src="img/item2.png" width="64" height="72" alt="item">
+              <p>
+После диагностики, исходя из конкретного случая возможно выбрать почасовое консультирование, как правило когда проблема неглубокая.</p>
+<span><b>Стоимость:</b></span>
+<p class="coast"><b>250 грн./час - 600 руб./ час</b> </p>
+            </div>
+            <div class="features-item-secondary clearfix">
+              <h3>Модуль "Проработка"</h3>
+              <span>&ndash; №3 &ndash;</span>
+              <img src="img/item3.png" width="64" height="72" alt="item">
+              <p>
+Наиболее эффективным является работа состоящая из нескольких приемов «модулей», которые длятся, обычно, от 2-х до 4-х часов.
+На первой консультации разрабатывается индивидуальная программа, которая в ходе последующих сеансов и консультаций воплощается в Вашу жизнь.
+Рассчитана на 1 месяц. Состоит из 5-ти консультаций по 1-2 консультации в неделю.
+В некоторых, исключительных случаях, интервал с месяца может быть окращен, если Клиент имеет на то везкие обстоятельства.
+<span><b>Стоимость:</b></span>
+<p class="coast"><b>2500 грн./ 6000 руб. </b></p>
+</div>
+<div class="features-item-secondary clearfix">
+  <h3>Модуль "Дополнительный"</h3>
+  <span>&ndash; №4 &ndash;</span>
+  <img src="img/item2.png" width="64" height="72" alt="item">
+  <p>
++5 консультаций. (обычно требуется, когда не все задачи мы решили в ходе первого модуля «Проработка», но есть высокая динамика изменений)
+Цель: доработка
+<span><b>Стоимость:</b></span>
+<p class="coast"><b>2500 грн./ 6000 руб. </b></p>
+</div>
+</div>
+        </section>
+        <section class="contant-visual">
+            <div class="contant-video clearfix">
+               <iframe width="560" height="315" src="https://www.youtube.com/embed/I2QywepCkEY" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/O7kBZ1o1VD8" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </section>
+    </div>
+        <footer>
+          <div class="contacts">
+            <h2>Контакты</h2>
+          </div>
+          <div class="modal">
+          <div id="contacts" class="box" clearfix>
+                <span></span>
+                <span>Польша: +48 570486115</span>
+                <span>Украина: +38 0632090364</span>
+                <span>viber/whatsapp: +38 0632090364</span>
+                <span>e-mail:k.totoonova@gmail.com</span>
+                <div class="btn-social">
+                <a class="social-btn social-btn-in" href="https://www.instagram.com/karina.totoonty/">Инстаграм</a>
+                <a class="social-btn social-btn-fb" href="https://www.facebook.com/people/Karina-Totoonova/100000041395665">Фейсбук</a>
+                <a class="social-btn social-btn-yt" href="https://www.youtube.com/channel/UCN2Fs_Jbt-he5PsGrZPZBBg">Ютуб</a>
+                <a class="social-btn social-btn-vk" href="https://vk.com/id36474225">Вконтакте</a>
+              </div>
+            </div>
+
+      <div class="box" clearfix>
+      <form action="#" method="post" id="form" class="form">
+          <div class="information">
+              <label for="info-1">Имя/Фамилия:</label>
+              <input type="text" id="name" name="name" placeholder="иван иванов" required>
+              <a href="#"></a>
+          </div>
+          <div class="information">
+              <label for="info-4">E-mail:</label>
+              <input type="text" id="email" name="email" placeholder="ivan@gmail.com"  required>
+              <a href="#"></a>
+          </div>
+          <div class="information">
+              <label for="info-4">Опишите суть запроса</label>
+              <input type="text" id="message" name="message" placeholder="меня беспокоит..."  required>
+              <a href="#"></a>
+            </div>
+            <div class="block-confirm">
+              <div class="confirmation">
+              <input type="checkbox" name="field" id="field" checked>
+              <label for="field">
+                Отправляя заявку, Вы подтверждаете, что НЕ состоите на учете у психиатра, Вы старше 18 лет, деньги на гипнотерапию НЕ являются для Вас последними или заёмными.
+              </label>
+              </div>
+              <div class="confirmation">
+             <input type="checkbox" name="field" id="field" checked>
+              <label for="field">
+                Со всеми противопоказаниями к гипнотерапии Вы ознакомились самостоятельно.
+             </label>
+           </div>
+             <div class="confirmation">
+            <input type="checkbox" name="field" id="field" checked>
+            <label for="field">
+                Все условия работы Вам известны и принимаются безоговорочно.
+              </label>
+              </div>
+            </div>
+            <input type="submit" id="sign" placeholder="Записаться" required>
+            <div id="messageShow"></div>
+          </form>
+          </div>
+        </div>
+        </footer>
+        <div class="down-box">
+          <h2>  Гипнотерапевт/системный расстановщик: Тотоонова Карина.</h2>
+          <span>Все права защищены. &copy; <?php echo date ('Y')?></span>
+        </div>
+
+        <!-- <script> -->
+
+
+</body>
+
+</html>
